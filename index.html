@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benicio, Casa de Pan | Comida Yucateca en Valle de Bravo</title>
+    <meta name="description" content="Restaurante especializado en comida Yucateca, pizzas artesanales, panadería tradicional y café rioplatense en Valle de Bravo">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Handlee&display=swap" rel="stylesheet">
+    <style>
+        /* Reset y Estilos Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #E8C07D; /* Dorado principal */
+            --secondary-color: #9B4444; /* Rojo terracota */
+            --accent-color: #A1C181; /* Verde oliva */
+            --dark-color: #2D2D2A; /* Gris oscuro */
+            --light-color: #F9F5E8; /* Beige claro */
+            --text-color: #333333;
+            --white: #FFFFFF;
+            --black: #000000;
+            --transition: all 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Handlee', cursive;
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: var(--light-color);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Berkshire Swash', cursive;
+            font-weight: normal;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            text-transform: capitalize;
+            letter-spacing: 1px;
+        }
+
+        .section-header h2 span {
+            color: var(--primary-color);
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: var(--text-color);
+        }
+
+        .bg-light {
+            background-color: var(--light-color);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border: 2px solid var(--secondary-color);
+            text-transform: capitalize;
+            font-family: 'Berkshire Swash', cursive;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(155, 68, 68, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--secondary-color);
+            margin-left: 15px;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Barra de Navegación */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 999;
+            transition: var(--transition);
+            background-color: rgba(45, 45, 42, 0.9);
+        }
+
+        .navbar.scrolled {
+            padding: 15px 0;
+            background-color: rgba(45, 45, 42, 0.95);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            text-transform: capitalize;
+            font-family: 'Berkshire Swash', cursive;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            text-transform: capitalize;
+            font-size: 18px;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .reserva-btn {
+            background-color: var(--primary-color);
+            color: var(--dark-color);
+            padding: 10px 25px;
+            border-radius: 30px;
+            transition: var(--transition);
+            border: 2px solid var(--primary-color);
+        }
+
+        .reserva-btn:hover {
+            background-color: transparent;
+            color: var(--primary-color);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            width: 30px;
+            height: 20px;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--white);
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(45, 45, 42, 0.7), rgba(45, 45, 42, 0.7)), url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero-content {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            margin-bottom: 20px;
+            text-transform: capitalize;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 30px;
+            font-family: 'Handlee', cursive;
+        }
+
+        /* Sección Nosotros */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 32px;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 5px solid var(--primary-color);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .features {
+            display: flex;
+            margin-top: 30px;
+            gap: 20px;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 25px;
+            border-radius: 10px;
+            background-color: var(--white);
+            transition: var(--transition);
+            flex: 1;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(155, 68, 68, 0.1);
+        }
+
+        .feature:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(155, 68, 68, 0.1);
+        }
+
+        .feature i {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .feature h4 {
+            font-size: 20px;
+            color: var(--secondary-color);
+        }
+
+        /* Sección Menú */
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tab-btn {
+            padding: 12px 30px;
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            text-transform: capitalize;
+            font-family: 'Berkshire Swash', cursive;
+            font-size: 18px;
+        }
+
+        .tab-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+            box-shadow: 0 5px 15px rgba(232, 192, 125, 0.3);
+        }
+
+        .menu-items {
+            margin-bottom: 40px;
+        }
+
+        .menu-category {
+            display: none;
+        }
+
+        .menu-category.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 0;
+            border-bottom: 1px dashed var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .menu-item:hover {
+            background-color: rgba(232, 192, 125, 0.1);
+            padding: 25px 15px;
+            border-radius: 5px;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-info h3 {
+            font-size: 22px;
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+            text-transform: capitalize;
+        }
+
+        .item-info p {
+            font-size: 16px;
+            color: var(--text-color);
+            max-width: 80%;
+        }
+
+        .item-price {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--primary-color);
+            font-family: 'Berkshire Swash', cursive;
+        }
+
+        /* Sección Galería */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 250px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(155, 68, 68, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(45, 45, 42, 0.8));
+            transition: var(--transition);
+        }
+
+        .gallery-overlay h3 {
+            color: var(--white);
+            font-size: 18px;
+            text-transform: capitalize;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            bottom: 0;
+        }
+
+        /* Sección Testimonios */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .testimonial:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(155, 68, 68, 0.1);
+        }
+
+        .testimonial-content {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-content i {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            font-size: 40px;
+            color: var(--primary-color);
+            opacity: 0.2;
+        }
+
+        .testimonial-content p {
+            font-style: italic;
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .rating {
+            color: var(--primary-color);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-author img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            border: 2px solid var(--primary-color);
+        }
+
+        .testimonial-author h4 {
+            font-size: 18px;
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+        }
+
+        /* Sección Contacto */
+        .contact-content {
+            display: flex;
+            gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .info-item i {
+            font-size: 24px;
+            color: var(--primary-color);
+            margin-right: 20px;
+            margin-top: 5px;
+        }
+
+        .info-item h4 {
+            font-size: 20px;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .info-item p {
+            font-size: 16px;
+        }
+
+        .contact-form {
+            flex: 1;
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Handlee', cursive;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(232, 192, 125, 0.2);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: none;
+        }
+
+        /* Mapa */
+        .map {
+            height: 400px;
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 5px solid var(--primary-color);
+        }
+
+        .map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark-color);
+            color: var(--white);
+            padding: 80px 0 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-col h3 {
+            font-size: 26px;
+            margin-bottom: 25px;
+            text-transform: capitalize;
+        }
+
+        .footer-col h3 span {
+            color: var(--primary-color);
+        }
+
+        .footer-col p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+            font-size: 16px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-col ul li a {
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+            opacity: 0.8;
+            font-size: 16px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+            opacity: 1;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+            color: var(--dark-color);
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-family: 'Handlee', cursive;
+            font-size: 14px;
+        }
+
+        .newsletter-form button {
+            width: 50px;
+            background-color: var(--primary-color);
+            color: var(--dark-color);
+            border: none;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background-color: var(--secondary-color);
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            padding: 20px 0;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-bottom p {
+            opacity: 0.8;
+            font-size: 14px;
+        }
+
+        /* Animaciones */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-content {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 48px;
+            }
+
+            .features {
+                flex-wrap: wrap;
+            }
+
+            .feature {
+                min-width: calc(50% - 10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--dark-color);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: var(--transition);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .hamburger {
+                display: flex;
+            }
+            
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 5px);
+            }
+            
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -6px);
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .section-header h2 {
+                font-size: 30px;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            section {
+                padding: 60px 0;
+            }
+            
+            .section-header h2 {
+                font-size: 26px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .menu-tabs {
+                flex-direction: column;
+            }
+            
+            .tab-btn {
+                width: 100%;
+            }
+
+            .feature {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de Navegación -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">Benicio<span>Casa de Pan</span></a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#menu">Menú</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#contacto" class="reserva-btn">Reservas</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="inicio" class="hero">
+        <div class="hero-content">
+            <h1 class="floating">Sabores Yucatecos <span>con Alma</span></h1>
+            <p>Pizzas artesanales, pan recién horneado y el mejor café rioplatense</p>
+            <div>
+                <a href="#menu" class="btn">Ver Menú</a>
+                <a href="#contacto" class="btn btn-outline">Reservar Mesa</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección Nosotros -->
+    <section id="nosotros" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nuestra <span>Historia</span></h2>
+                <p>Conoce más sobre nuestro rincón gastronómico</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Desde 2015 deleitando paladares</h3>
+                    <p>Benicio, Casa de Pan nació en el corazón de Valle de Bravo como un pequeño proyecto familiar que combinaba los sabores auténticos de Yucatán con la tradición panadera y el arte de la pizza. Hoy somos un referente gastronómico en la región.</p>
+                    <p>Nuestro chef, originario de Mérida, ha fusionado las recetas de su abuela con técnicas modernas para crear una experiencia culinaria única. Cada plato cuenta una historia y cada pan lleva el amor de nuestro horno de leña.</p>
+                    <div class="features">
+                        <div class="feature">
+                            <i class="fas fa-bread-slice"></i>
+                            <h4>Pan Artesanal</h4>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-pizza-slice"></i>
+                            <h4>Pizzas Únicas</h4>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-coffee"></i>
+                            <h4>Café Rioplatense</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Interior de Benicio, Casa de Pan">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Menú -->
+    <section id="menu" class="section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nuestro <span>Menú</span></h2>
+                <p>Descubre nuestros sabores estrella</p>
+            </div>
+            <div class="menu-tabs">
+                <button class="tab-btn active" data-category="yucateca">Cocina Yucateca</button>
+                <button class="tab-btn" data-category="pizzas">Pizzas</button>
+                <button class="tab-btn" data-category="panaderia">Panadería</button>
+                <button class="tab-btn" data-category="cafeteria">Cafetería</button>
+            </div>
+            <div class="menu-items">
+                <!-- Cocina Yucateca -->
+                <div class="menu-category active" id="yucateca">
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>Cochinita Pibil</h3>
+                            <p>Carne de cerdo marinada en achiote y jugo de naranja agria, cocida al estilo tradicional</p>
+                        </div>
+                        <div class="item-price">$185</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>Panuchos</h3>
+                            <p>Tortillas rellenas de frijol, topped con pollo desmenuzado, lechuga, aguacate y cebolla morada</p>
+                        </div>
+                        <div class="item-price">$120</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>Queso Relleno</h3>
+                            <p>Bola de queso Edam rellena de carne molida, alcaparras y aceitunas, bañada en salsa kol</p>
+                        </div>
+                        <div class="item-price">$210</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>Sopa de Lima</h3>
+                            <p>Caldo de pollo con lima y tortilla frita, tradición yucateca</p>
+                        </div>
+                        <div class="item-price">$95</div>
+                    </div>
+                </div>
+                
+                <!-- Pizzas -->
+                <div class="menu-category" id="pizzas">
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>Pizza Yucateca</h3>
+                            <p>Base de frijol, cochinita pibil, cebolla morada y chile habanero</p>
+                        </div>
+                        <div class="item-price">$250</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>Pizza del Huerto</h3>
+                            <p>Queso de cabra, calabaza asada, espinacas y nuez</p>
+                        </div>
+                        <div class="item-price">$230</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>Pizza Clásica</h3>
+                            <p>Salsa de tomate, mozzarella, pepperoni y champiñones</p>
+                        </div>
+                        <div class="item-price">$220</div>
+                    </div>
+                </div>
+                
+                <!-- Panadería -->
+                <div class="menu-category" id="panaderia">
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>Pan de Elote</h3>
+                            <p>Hecho con elote fresco y canela, especialidad de la casa</p>
+                        </div>
+                        <div class="item-price">$45</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>Conchas Tradicionales</h3>
+                            <p>Pan dulce con cubierta azucarada de vainilla o chocolate</p>
+                        </div>
+                        <div class="item-price">$35</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>Baguette Artesanal</h3>
+                            <p>Pan rústico de larga fermentación, perfecto para acompañar</p>
+                        </div>
+                        <div class="item-price">$60</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>Croissants</h3>
+                            <p>Clásicos o rellenos de chocolate/dulce de leche</p>
+                        </div>
+                        <div class="item-price">$50</div>
+                    </div>
+                </div>
+                
+                <!-- Cafetería -->
+                <div class="menu-category" id="cafeteria">
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>Café de Especialidad</h3>
+                            <p>Granos uruguayos tostados al momento (americano, expresso, capuccino)</p>
+                        </div>
+                        <div class="item-price">$55</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>Submarino</h3>
+                            <p>Chocolate caliente con barra de chocolate sumergida, estilo rioplatense</p>
+                        </div>
+                        <div class="item-price">$65</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>Mate Cocido</h3>
+                            <p>Tradicional infusión uruguaya servida con hierbas aromáticas</p>
+                        </div>
+                        <div class="item-price">$45</div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="item-info">
+                            <h3>Medialunas</h3>
+                            <p>Dos medialunas recién horneadas con café o té</p>
+                        </div>
+                        <div class="item-price">$75</div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="#" class="btn">Ver Menú Completo (PDF)</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Galería -->
+    <section id="galeria" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nuestra <span>Galería</span></h2>
+                <p>Un vistazo a nuestros platos y ambiente</p>
+            </div>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Interior del restaurante">
+                    <div class="gallery-overlay">
+                        <h3>Nuestro Espacio</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1381&q=80" alt="Pizza artesanal">
+                    <div class="gallery-overlay">
+                        <h3>Pizzas Artesanales</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Interior del restaurante">
+                    <div class="gallery-overlay">
+                        <h3>Pan Recién Horneado</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Cafetería">
+                    <div class="gallery-overlay">
+                        <h3>Café Rioplatense</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Cochinita pibil">
+                    <div class="gallery-overlay">
+                        <h3>Cochinita Pibil</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Cafetería">
+                    <div class="gallery-overlay">
+                        <h3>Nuestro Horno de Leña</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Testimonios -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Lo que dicen <span>nuestros clientes</span></h2>
+                <p>Experiencias compartidas</p>
+            </div>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-left"></i>
+                        <p>La mejor cochinita pibil fuera de Yucatán. El pan de elote es simplemente divino y el ambiente es tan acogedor que siempre volvemos. ¡Un must en Valle de Bravo!</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Cliente satisfecho">
+                        <h4>Ana Martínez</h4>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <i class="fas fa-quote-left"></i>
+                        <p>Como uruguayo, puedo decir que su café es auténtico y delicioso. Las medialunas me transportaron a Montevideo. Un lugar con mucho encanto y sabores genuinos.</p>
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Cliente satisfecho">
+                        <h4>Diego Fernández</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contacto" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contáct<span>anos</span></h2>
+                <p>Reserva tu mesa o envíanos un mensaje</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Dirección</h4>
+                            <p>Paseo Acatitlán S/N Km 3, Valle de Bravo</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h4>Teléfono</h4>
+                            <p>726 101 2430</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>hola@beniciocasadepan.com</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Horario</h4>
+                            <p>Domingo, Lunes, Martes: 9am - 7pm</p>
+                            <p>Miércoles a Sábado: 9am - 10pm</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="reservaForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Nombre completo" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Correo electrónico" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Teléfono" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="date" placeholder="Fecha" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="time" placeholder="Hora" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" placeholder="Número de personas" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Mensaje adicional"></textarea>
+                        </div>
+                        <button type="submit" class="btn">Reservar Mesa</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!-- Mapa actualizado -->
+<!-- Reemplaza la sección del mapa en tu código con esto: -->
+<div class="map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3765.203944647184!2d-100.1022274!3d19.1985107!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85cd63002262e23d%3A0x30d098ee1d8539e3!2sBenicio%20Casa%20de%20Pan!5e0!3m2!1ses!2smx!4v1689876423581!5m2!1ses!2smx" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>Benicio<span>Casa de Pan</span></h3>
+                    <p>Sabores Yucatecos, pizzas artesanales y café rioplatense en el corazón de Valle de Bravo.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="#menu">Menú</a></li>
+                        <li><a href="#galeria">Galería</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Horario</h3>
+                    <ul>
+                        <li>Domingo, Lunes, Martes: 9am - 7pm</li>
+                        <li>Miércoles a Sábado: 9am - 10pm</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <p>Suscríbete para recibir promociones y eventos especiales.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Tu correo electrónico" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2025 Benicio, Casa de Pan. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navegación responsive
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const navbar = document.querySelector('.navbar');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Cambiar navbar al hacer scroll
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Sistema de pestañas del menú
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const menuCategories = document.querySelectorAll('.menu-category');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remover clase active de todos los botones
+                tabBtns.forEach(btn => btn.classList.remove('active'));
+                // Añadir clase active al botón clickeado
+                btn.classList.add('active');
+                
+                // Obtener la categoría a mostrar
+                const category = btn.getAttribute('data-category');
+                
+                // Ocultar todas las categorías
+                menuCategories.forEach(cat => cat.classList.remove('active'));
+                // Mostrar la categoría seleccionada
+                document.getElementById(category).classList.add('active');
+            });
+        });
+
+        // Formulario de reserva
+        const reservaForm = document.getElementById('reservaForm');
+
+        reservaForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Aquí iría la lógica para enviar el formulario
+            // Por ahora solo mostraremos una alerta
+            alert('¡Gracias por tu reserva! Nos pondremos en contacto contigo para confirmar.');
+            reservaForm.reset();
+        });
+
+        // Animación al hacer scroll
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.about-image, .feature, .menu-item, .gallery-item, .testimonial');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Establecer opacidad inicial para los elementos a animar
+        document.querySelectorAll('.about-image, .feature, .menu-item, .gallery-item, .testimonial').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+        });
+
+        window.addEventListener('scroll', animateOnScroll);
+        // Ejecutar una vez al cargar la página
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
